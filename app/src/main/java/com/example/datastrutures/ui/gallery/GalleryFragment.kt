@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.datastrutures.R
 import com.example.datastrutures.databinding.FragmentGalleryBinding
+import com.example.datastrutures.library.Stack
 
 class GalleryFragment : Fragment() {
 
@@ -31,16 +32,15 @@ class GalleryFragment : Fragment() {
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val stack : Stack<Any>
         val arrayAdapter: ArrayAdapter<*>
-        val users = arrayOf(
-            "Virat Kohli", "Rohit Sharma", "Steve Smith",
-            "Kane Williamson", "Ross Taylor","Ross Taylor","Ross Taylor","Ross Taylor","Ross Taylor"
-        )
+        val stackItem = binding.addStack.text
+        stack.push(stackItem)
 
         var mListView = binding.listStack
         arrayAdapter = ArrayAdapter(
             requireContext(),
-            android.R.layout.simple_list_item_1, users
+            android.R.layout.simple_list_item_1, stackItem
         )
         mListView.adapter = arrayAdapter
 

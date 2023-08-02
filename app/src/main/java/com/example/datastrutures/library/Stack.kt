@@ -16,4 +16,6 @@ class Stack<Element> {
     fun peek(): Any? {
         return storage.lastOrNull()
     }
+
+
 }
