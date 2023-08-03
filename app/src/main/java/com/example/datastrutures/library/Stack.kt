@@ -11,7 +11,7 @@ class Stack<Element> {
     }
 
     fun push(e: Any) {
-        storage.add(e)
+        storage.add(0,e)
     }
 
     fun peek(): Any? {
@@ -25,7 +25,9 @@ class Stack<Element> {
     fun setStorage(storage:ArrayList<Any>){
         this.storage = storage
     }
-
+    fun getReversedStorage(): ArrayList<Any> {
+        return storage.reversed() as ArrayList<Any>
+    }
 
 
 }

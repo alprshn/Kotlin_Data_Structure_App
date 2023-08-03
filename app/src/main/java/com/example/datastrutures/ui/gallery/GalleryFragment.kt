@@ -33,28 +33,30 @@ class GalleryFragment : Fragment() {
         val root: View = binding.root
 
 
-        val stack : Stack<Any> = Stack()
-
-
+        val stack = Stack<String>()
 
         var mListView = binding.listStack
+
+
+
+
         var arrayAdapter = ArrayAdapter(
             requireContext(),
-            android.R.layout.simple_list_item_1,reverseStorage
+            android.R.layout.simple_list_item_1, stack.getStorage()
         )
         mListView.adapter = arrayAdapter
-
-
 
         binding.addStackButton.setOnClickListener {
             val stackItem = binding.addStack.text.toString().trim()
             stack.push(stackItem)
+
             arrayAdapter.notifyDataSetChanged()
+//            for (i in stack.getStorage().indices) {
+//                stack.getStorage().add(i, stack.getStorage().removeLast())
+//            }
             binding.addStack.text.clear()
         }
 
-        reverseStorage.add(stack.peek().toString())
-        stack.pop()
         return root
     }
 
