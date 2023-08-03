@@ -16,7 +16,8 @@ import com.example.datastrutures.library.Stack
 class GalleryFragment : Fragment() {
 
     private var _binding: FragmentGalleryBinding? = null
-    private var reverseStorage  = ArrayList<Any>()
+    private var popStorage  = ArrayList<Any>()
+    var stack = Stack<String>()
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -33,29 +34,39 @@ class GalleryFragment : Fragment() {
         val root: View = binding.root
 
 
-        val stack = Stack<String>()
-
-        var mListView = binding.listStack
 
 
-
-
+         //Added Stack Class
+        var pushListView = binding.listStack
         var arrayAdapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_list_item_1, stack.getStorage()
         )
-        mListView.adapter = arrayAdapter
+        pushListView.adapter = arrayAdapter
 
         binding.addStackButton.setOnClickListener {
             val stackItem = binding.addStack.text.toString().trim()
             stack.push(stackItem)
-
             arrayAdapter.notifyDataSetChanged()
-//            for (i in stack.getStorage().indices) {
-//                stack.getStorage().add(i, stack.getStorage().removeLast())
-//            }
             binding.addStack.text.clear()
         }
+
+
+        var popListView = binding.listPopStack
+        var popArrayAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1, popStorage
+        )
+        popListView.adapter = popArrayAdapter
+
+
+        binding.popStackButton.setOnClickListener{
+            popStorage.add(stack.peek().toString())
+            stack.pop()
+            popArrayAdapter.notifyDataSetChanged()
+            arrayAdapter.notifyDataSetChanged()
+        }
+
 
         return root
     }
@@ -64,4 +75,6 @@ class GalleryFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

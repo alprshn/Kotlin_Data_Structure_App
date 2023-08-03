@@ -7,7 +7,7 @@ class Stack<Element> {
         if(storage.size == 0){
             return null
         }
-        return  storage.removeAt(storage.size-1)
+        return  storage.removeAt(0)
     }
 
     fun push(e: Any) {
@@ -15,7 +15,7 @@ class Stack<Element> {
     }
 
     fun peek(): Any? {
-        return storage.lastOrNull()
+        return storage.firstOrNull()
     }
 
     fun getStorage(): ArrayList<Any> {
