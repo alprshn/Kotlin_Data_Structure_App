@@ -16,7 +16,7 @@ import com.example.datastrutures.library.Stack
 class GalleryFragment : Fragment() {
 
     private var _binding: FragmentGalleryBinding? = null
-
+    private var reverseStorage  = ArrayList<Any>()
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -32,18 +32,29 @@ class GalleryFragment : Fragment() {
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val stack : Stack<Any>
-        val arrayAdapter: ArrayAdapter<*>
-        val stackItem = binding.addStack.text
-        stack.push(stackItem)
+
+        val stack : Stack<Any> = Stack()
+
+
 
         var mListView = binding.listStack
-        arrayAdapter = ArrayAdapter(
+        var arrayAdapter = ArrayAdapter(
             requireContext(),
-            android.R.layout.simple_list_item_1, stackItem
+            android.R.layout.simple_list_item_1,reverseStorage
         )
         mListView.adapter = arrayAdapter
 
+
+
+        binding.addStackButton.setOnClickListener {
+            val stackItem = binding.addStack.text.toString().trim()
+            stack.push(stackItem)
+            arrayAdapter.notifyDataSetChanged()
+            binding.addStack.text.clear()
+        }
+
+        reverseStorage.add(stack.peek().toString())
+        stack.pop()
         return root
     }
 
