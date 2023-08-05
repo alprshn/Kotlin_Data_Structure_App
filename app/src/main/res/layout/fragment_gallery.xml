@@ -6,26 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".ui.gallery.GalleryFragment">
 
-    <ListView
-        android:id="@+id/listPopStack"
-        android:layout_width="150dp"
-        android:layout_height="290dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="16dp"
-        android:stackFromBottom="true"
+    <Button
+        android:id="@+id/popStackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="108dp"
+        android:text="Pop Element"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addStackButton" />
+        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintStart_toEndOf="@+id/listStack" />
+
+    <EditText
+        android:id="@+id/addStack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="103dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/listStack"
         android:layout_width="150dp"
         android:layout_height="290dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="79dp"
-        android:stackFromBottom="true"
+        android:layout_marginTop="56dp"
         android:background="@drawable/rounded_background"
-        app:layout_constraintEnd_toStartOf="@+id/listPopStack"
+        android:stackFromBottom="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addStackButton" />
 
@@ -34,36 +49,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="149dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="168dp"
         android:text="Push Element"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addStack" />
 
-    <Button
-        android:id="@+id/popStackButton"
+    <TextView
+        android:id="@+id/pushText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginBottom="86dp"
-        android:text="Pop Element"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="102dp"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listStack" />
+        app:layout_constraintStart_toEndOf="@+id/listStack"
+        app:layout_constraintTop_toBottomOf="@+id/addStackButton" />
 
-    <EditText
-        android:id="@+id/addStack"
+    <TextView
+        android:id="@+id/popText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="101dp"
-        android:layout_marginEnd="103dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="102dp"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/listStack"
+        app:layout_constraintTop_toBottomOf="@+id/pushText" />
+
+    <Button
+        android:id="@+id/clearButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="74dp"
+        android:text="Clear All"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/listStack"
+        app:layout_constraintTop_toBottomOf="@+id/popText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

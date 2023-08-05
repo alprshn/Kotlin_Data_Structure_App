@@ -49,27 +49,28 @@ class GalleryFragment : Fragment() {
         pushListView.adapter = arrayAdapter
 
         binding.addStackButton.setOnClickListener {
-            val stackItem = binding.addStack.text.toString().trim() + "Eleman $i"
+            val stackItem =  "Index $i"+ binding.addStack.text.toString().trim()
             stack.push(stackItem)
             arrayAdapter.notifyDataSetChanged()
+            binding.pushText.text = "Index $i"+ binding.addStack.text.toString().trim()
             i= i+1
+
+
             binding.addStack.text.clear()
         }
 
-
-        var popListView = binding.listPopStack
-        var popArrayAdapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_list_item_1, popStorage
-        )
-        popListView.adapter = popArrayAdapter
-
-
         binding.popStackButton.setOnClickListener{
-            popStorage.add(stack.peek().toString())
+            binding.popText.text = stack.peek().toString()
             stack.pop()
-            popArrayAdapter.notifyDataSetChanged()
             arrayAdapter.notifyDataSetChanged()
+        }
+
+        binding.clearButton.setOnClickListener {
+            arrayAdapter.clear()
+            binding.addStack.text.clear()
+            binding.popText.text = ""
+            binding.pushText.text = ""
+
         }
 
 
