@@ -10,13 +10,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="@drawable/rounded_background">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/pushItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="TextView"
+            android:padding="5dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/rounded_background"
+            android:backgroundTint="@color/purple_200"/>
+
+        <TextView
+            android:id="@+id/pushIndexText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:text="TextView"
+            android:padding="5dp"/>
+
+
     </LinearLayout>
 </LinearLayout>

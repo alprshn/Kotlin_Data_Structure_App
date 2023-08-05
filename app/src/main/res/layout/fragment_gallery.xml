@@ -24,6 +24,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="79dp"
         android:stackFromBottom="true"
+        android:background="@drawable/rounded_background"
         app:layout_constraintEnd_toStartOf="@+id/listPopStack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addStackButton" />

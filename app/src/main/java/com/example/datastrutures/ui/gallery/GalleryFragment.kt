@@ -16,8 +16,11 @@ import com.example.datastrutures.library.Stack
 class GalleryFragment : Fragment() {
 
     private var _binding: FragmentGalleryBinding? = null
+
+
     private var popStorage  = ArrayList<Any>()
-    var stack = Stack<String>()
+
+    var stack = Stack<Any>()
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -34,7 +37,7 @@ class GalleryFragment : Fragment() {
         val root: View = binding.root
 
 
-
+        var i = 1
 
          //Added Stack Class
         var pushListView = binding.listStack
@@ -42,12 +45,14 @@ class GalleryFragment : Fragment() {
             requireContext(),
             android.R.layout.simple_list_item_1, stack.getStorage()
         )
+
         pushListView.adapter = arrayAdapter
 
         binding.addStackButton.setOnClickListener {
-            val stackItem = binding.addStack.text.toString().trim()
+            val stackItem = binding.addStack.text.toString().trim() + "Eleman $i"
             stack.push(stackItem)
             arrayAdapter.notifyDataSetChanged()
+            i= i+1
             binding.addStack.text.clear()
         }
 
