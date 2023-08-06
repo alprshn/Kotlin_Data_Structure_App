@@ -9,6 +9,8 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.datastrutures.R
 import com.example.datastrutures.databinding.FragmentGalleryBinding
 import com.example.datastrutures.library.Stack
@@ -37,44 +39,24 @@ class GalleryFragment : Fragment() {
         val root: View = binding.root
 
 
-        var i = 1
-
-         //Added Stack Class
-        var pushListView = binding.listStack
-        var arrayAdapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_list_item_1, stack.getStorage()
-        )
-
-        pushListView.adapter = arrayAdapter
-
-        binding.addStackButton.setOnClickListener {
-            val stackItem =  "Index $i"+ binding.addStack.text.toString().trim()
-            stack.push(stackItem)
-            arrayAdapter.notifyDataSetChanged()
-            binding.pushText.text = "Index $i"+ binding.addStack.text.toString().trim()
-            i= i+1
-
-
-            binding.addStack.text.clear()
-        }
-
-        binding.popStackButton.setOnClickListener{
-            binding.popText.text = stack.peek().toString()
-            stack.pop()
-            arrayAdapter.notifyDataSetChanged()
-        }
-
-        binding.clearButton.setOnClickListener {
-            arrayAdapter.clear()
-            binding.addStack.text.clear()
-            binding.popText.text = ""
-            binding.pushText.text = ""
+        binding.stackSimulateButton.setOnClickListener {
+            callFragment(StackSimulationFragment())
 
         }
 
+        binding.stackReadButton.setOnClickListener {
+            callFragment(GalleryFragment())
+
+        }
 
         return root
+    }
+
+    fun callFragment(fragment: Fragment) {
+        val fragmentTransaction =  activity?.supportFragmentManager?.beginTransaction()
+
+        fragmentTransaction?.replace(R.id.frameLayoutForFragments, fragment)
+        fragmentTransaction?.commit()
     }
 
     override fun onDestroyView() {
