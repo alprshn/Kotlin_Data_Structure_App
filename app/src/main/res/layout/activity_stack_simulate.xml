@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.StackSimulationFragment"
-    android:id="@+id/denme">
+    tools:context=".ui.gallery.StackSimulateActivity">
 
     <Button
         android:id="@+id/popStackButton"
@@ -93,5 +92,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/listStack"
         app:layout_constraintTop_toBottomOf="@+id/popText" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

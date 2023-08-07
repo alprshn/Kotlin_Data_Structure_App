@@ -1,5 +1,6 @@
 package com.example.datastrutures.ui.gallery
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,7 +41,8 @@ class GalleryFragment : Fragment() {
 
 
         binding.stackSimulateButton.setOnClickListener {
-            callFragment(StackSimulationFragment())
+            val intent = Intent(activity, StackSimulateActivity::class.java)
+            startActivity(intent)
 
         }
 
@@ -56,6 +58,7 @@ class GalleryFragment : Fragment() {
         val fragmentTransaction =  activity?.supportFragmentManager?.beginTransaction()
 
         fragmentTransaction?.replace(R.id.frameLayoutForFragments, fragment)
+        fragmentTransaction?.addToBackStack(null)
         fragmentTransaction?.commit()
     }
 

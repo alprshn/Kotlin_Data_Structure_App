@@ -1,38 +1,26 @@
 package com.example.datastrutures.ui.gallery
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.MenuItem
 import android.widget.ArrayAdapter
-import androidx.lifecycle.ViewModelProvider
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.datastrutures.R
-import com.example.datastrutures.databinding.FragmentStackSimulationBinding
+import com.example.datastrutures.databinding.ActivityStackSimulateBinding
 import com.example.datastrutures.library.Stack
 
-class StackSimulationFragment : Fragment() {
-    private var _binding: FragmentStackSimulationBinding? = null
+class StackSimulateActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityStackSimulateBinding
 
     private var popStorage = ArrayList<Any>()
 
     var stack = Stack<Any>()
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val galleryViewModel =
-            ViewModelProvider(this).get(StackSimulatinViewModel::class.java)
-
-        _binding = FragmentStackSimulationBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+    override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityStackSimulateBinding.inflate(layoutInflater)
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
         var i = 1
@@ -40,7 +28,7 @@ class StackSimulationFragment : Fragment() {
         //Added Stack Class
         var pushListView = binding.listStack
         var arrayAdapter = ArrayAdapter(
-            requireContext(),
+            this,
             android.R.layout.simple_list_item_1, stack.getStorage()
         )
 
@@ -70,6 +58,15 @@ class StackSimulationFragment : Fragment() {
             binding.pushText.text = ""
 
         }
-        return root
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed() // Aktiviteyi sonlandırarak geri gitme işlemini gerçekleştirir.
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
