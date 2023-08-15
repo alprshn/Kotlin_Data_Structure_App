@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.StackSimulateActivity">
+    tools:context=".ui.stack.StackSimulateActivity">
 
     <Button
         android:id="@+id/popStackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="44dp"
-        android:layout_marginBottom="108dp"
         android:text="Pop Element"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.822"
-        app:layout_constraintStart_toEndOf="@+id/listStack" />
+        app:layout_constraintStart_toEndOf="@+id/listStack"
+        app:layout_constraintTop_toBottomOf="@+id/clearButton" />
 
     <EditText
         android:id="@+id/addStack"

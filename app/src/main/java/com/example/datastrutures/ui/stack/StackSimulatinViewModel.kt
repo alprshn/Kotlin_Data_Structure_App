@@ -1,4 +1,4 @@
-package com.example.datastrutures.ui.gallery
+package com.example.datastrutures.ui.stack
 
 import androidx.lifecycle.ViewModel
 

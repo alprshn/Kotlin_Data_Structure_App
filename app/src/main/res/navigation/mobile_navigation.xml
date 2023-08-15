@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.datastrutures.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_stack"
+        android:name="com.example.datastrutures.ui.stack.StackFragment"
+        android:label="@string/menu_stack"
+        tools:layout="@layout/fragment_stack" />
 
     <fragment
         android:id="@+id/nav_slideshow"

@@ -1,11 +1,9 @@
-package com.example.datastrutures.ui.gallery
+package com.example.datastrutures.ui.stack
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ArrayAdapter
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.example.datastrutures.R
 import com.example.datastrutures.databinding.ActivityStackSimulateBinding
 import com.example.datastrutures.library.Stack
 
@@ -58,6 +56,12 @@ class StackSimulateActivity : AppCompatActivity() {
             binding.pushText.text = ""
 
         }
+
+
+        val actionBar = supportActionBar
+
+        // Eğer ActionBar varsa, metni değiştir
+        actionBar?.title = "Stack Simulation"
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
