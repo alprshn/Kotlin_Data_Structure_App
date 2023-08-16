@@ -7,7 +7,7 @@
     tools:context=".ui.queues.QueuesSimulateActivity">
 
     <ListView
-        android:id="@+id/listStack"
+        android:id="@+id/listQueues"
         android:layout_width="150dp"
         android:layout_height="290dp"
         android:layout_marginStart="24dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toBottomOf="@+id/enqueueQueueButton" />
 
     <EditText
-        android:id="@+id/addStack2"
+        android:id="@+id/addQueues"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
@@ -41,8 +41,8 @@
         android:layout_marginEnd="109dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/listStack"
-        app:layout_constraintTop_toBottomOf="@+id/addStack2" />
+        app:layout_constraintStart_toEndOf="@+id/listQueues"
+        app:layout_constraintTop_toBottomOf="@+id/addQueues" />
 
     <TextView
         android:id="@+id/dequeueText"
@@ -53,7 +53,7 @@
         android:layout_marginEnd="100dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/listStack"
+        app:layout_constraintStart_toEndOf="@+id/listQueues"
         app:layout_constraintTop_toBottomOf="@+id/enqueueText" />
 
     <Button
@@ -65,7 +65,7 @@
         android:layout_marginEnd="75dp"
         android:text="Clear All"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/listStack"
+        app:layout_constraintStart_toEndOf="@+id/listQueues"
         app:layout_constraintTop_toBottomOf="@+id/dequeueText" />
 
     <Button
@@ -77,7 +77,7 @@
         android:layout_marginEnd="88dp"
         android:text="Dequeue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/listStack"
+        app:layout_constraintStart_toEndOf="@+id/listQueues"
         app:layout_constraintTop_toBottomOf="@+id/clearQueuesButton" />
 
     <Button
@@ -90,6 +90,6 @@
         android:text="enqueue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addStack2" />
+        app:layout_constraintTop_toBottomOf="@+id/addQueues" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

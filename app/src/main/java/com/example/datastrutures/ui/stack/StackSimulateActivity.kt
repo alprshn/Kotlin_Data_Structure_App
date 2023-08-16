@@ -11,7 +11,6 @@ class StackSimulateActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityStackSimulateBinding
 
-    private var popStorage = ArrayList<Any>()
 
     var stack = Stack<Any>()
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -2,10 +2,10 @@ package com.example.datastrutures.library
 
 
 class Queues<T> {
-    private val list = arrayListOf<T>()
+    private val list = ArrayList<Any>()
 
-    fun enqueue(element: T) {
-        list.add(element)
+    fun enqueue(element: Any) {
+        list.add(0,element)
     }
 
     fun dequeue() {
@@ -26,4 +26,8 @@ class Queues<T> {
 
     fun size(): Int = list.count()
     fun isEmpty(): Boolean = list.isEmpty()
+
+    fun getQueuesStorage(): ArrayList<Any> {
+        return list
+    }
 }
