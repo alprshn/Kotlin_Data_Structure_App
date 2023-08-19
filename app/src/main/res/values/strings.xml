@@ -10,6 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_stack">Stack</string>
     <string name="menu_queues">Queues</string>
+    <string name="menu_binary_trees">Binary Search Trees</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
