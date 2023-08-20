@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import com.example.datastrutures.R
 
 import com.example.datastrutures.databinding.FragmentBinarySearchTreesBinding
+import com.google.android.material.navigation.NavigationView
 
 
 class BinarySearchTreesFragment : Fragment() {
@@ -33,6 +35,7 @@ class BinarySearchTreesFragment : Fragment() {
         binaryTreesViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
         return root
     }
 

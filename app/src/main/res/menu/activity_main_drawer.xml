@@ -15,14 +15,15 @@
         <item
             android:id="@+id/nav_queues"
             android:icon="@drawable/queues"
-            android:title="@string/menu_queues"/>
+            android:title="@string/menu_queues" />
+        <item
+            android:id="@+id/nav_trees"
+            android:icon="@drawable/baseline_arrow_drop_down"
+            android:title="@string/menu_trees" />
         <item
             android:id="@+id/nav_binary_trees"
             android:icon="@drawable/queues"
-            android:title="@string/menu_binary_trees"/>
-        <item
-            android:id="@+id/nav_trees"
-            android:icon="@drawable/queues"
-            android:title="@string/menu_trees"/>
+            android:title="@string/menu_binary_trees"
+            android:visible="false"/>
     </group>
 </menu>

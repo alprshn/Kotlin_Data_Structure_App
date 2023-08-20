@@ -34,21 +34,51 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_stack, R.id.nav_queues, R.id.nav_binary_trees,R.id.nav_trees
+                R.id.nav_home, R.id.nav_stack, R.id.nav_queues, R.id.nav_binary_trees
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
+        var selector: Boolean = true
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_trees -> {
-                    navView.menu.findItem(R.id.nav_binary_trees).isVisible = false
-                    true
+                    if (!selector) {
+                        navView.menu.findItem(R.id.nav_binary_trees).isVisible = false
+                        navView.menu.findItem(R.id.nav_trees)
+                            .setIcon(R.drawable.baseline_arrow_drop_down)
+                        selector = true
+                    } else {
+                        navView.menu.findItem(R.id.nav_binary_trees).isVisible = true
+                        navView.menu.findItem(R.id.nav_trees)
+                            .setIcon(R.drawable.baseline_arrow_drop_up)
+                        selector = false
+                    }
+
                 }
-                else -> false
+
+                R.id.nav_binary_trees -> {
+                    navController.navigate(R.id.nav_binary_trees)
+                    drawerLayout.closeDrawers()
+                }
+
+                R.id.nav_queues -> {
+                    navController.navigate(R.id.nav_queues)
+                    drawerLayout.closeDrawers()
+                }
+
+                R.id.nav_stack -> {
+                    navController.navigate(R.id.nav_stack)
+                    drawerLayout.closeDrawers()
+                }
+
+                R.id.nav_home -> {
+                    navController.navigate(R.id.nav_home)
+                    drawerLayout.closeDrawers()
+                }
             }
+            true
         }
 
     }
