@@ -2,6 +2,8 @@ package com.example.datastrutures
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -32,11 +34,22 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_stack, R.id.nav_queues,R.id.nav_binary_trees
+                R.id.nav_home, R.id.nav_stack, R.id.nav_queues, R.id.nav_binary_trees,R.id.nav_trees
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_trees -> {
+                    navView.menu.findItem(R.id.nav_binary_trees).isVisible = false
+                    true
+                }
+                else -> false
+            }
+        }
 
     }
 

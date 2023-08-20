@@ -20,5 +20,9 @@
             android:id="@+id/nav_binary_trees"
             android:icon="@drawable/queues"
             android:title="@string/menu_binary_trees"/>
+        <item
+            android:id="@+id/nav_trees"
+            android:icon="@drawable/queues"
+            android:title="@string/menu_trees"/>
     </group>
 </menu>
