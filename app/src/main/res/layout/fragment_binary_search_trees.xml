@@ -6,20 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".ui.binary_search_trees.BinarySearchTreesFragment">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <ScrollView
+        android:id="@+id/scrollBinaryTreesView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       >
+        android:layout_margin="10dp">
 
-        <Button
-            android:id="@+id/addCircleButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:layout_marginStart="158dp"
-            android:layout_marginEnd="159dp"
-            android:text="Button" />
-    </FrameLayout>
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/BinaryTreesTest"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/BinaryTreesSimulateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_media_play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
