@@ -6,17 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.binary_search_trees.BinarySearchTreesFragment">
 
-    <TextView
-        android:id="@+id/textBinaryTrees"
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+       >
+
+        <Button
+            android:id="@+id/addCircleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:layout_marginStart="158dp"
+            android:layout_marginEnd="159dp"
+            android:text="Button" />
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
