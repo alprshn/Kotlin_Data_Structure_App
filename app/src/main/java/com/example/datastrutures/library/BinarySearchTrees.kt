@@ -20,8 +20,7 @@ class BinarySearchTrees {
 
     fun InsertData(root: Node?, data: Int): Node {
         if (root == null) {
-            root = Node(data)
-            return root
+            return Node(data)
         }
         if (data < root.data) {
             root.leftChild = InsertData(root.leftChild, data)
