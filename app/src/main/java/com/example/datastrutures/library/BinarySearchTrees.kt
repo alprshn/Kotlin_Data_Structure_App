@@ -14,7 +14,7 @@ class Node(item: Int) {     /* Node data structure for binary search tree */
 var root: Node? = null
 
 class BinarySearchTrees {
-
+    var directionSelector: Boolean = false
     fun Insert(data: Int) {
         root = InsertData(root, data);
     }
@@ -25,8 +25,10 @@ class BinarySearchTrees {
         }
         if (data < root.data) {
             root.leftChild = InsertData(root.leftChild, data)
+            directionSelector = false
         } else if (data > root.data) {
             root.rightChild = InsertData(root.rightChild, data)
+            directionSelector = true
         }
         return root
     }
@@ -39,7 +41,7 @@ class BinarySearchTrees {
         if (root != null) {
             InorderRec(root.leftChild)
             var deneme = root.data
-            Log.e("deneme","$deneme + ->")
+           println("$deneme + ->")
             InorderRec(root.rightChild)
         }
     }
@@ -84,24 +86,5 @@ class BinarySearchTrees {
     }
 
 
-    fun main() {
 
-
-        Insert(8);
-        Insert(3);
-        Insert(1);
-        Insert(6);
-        Insert(7);
-        Insert(10);
-        Insert(14);
-        Insert(4);
-
-        Log.e("deneme","Inorder traversal: ");
-        inorder();
-
-        Log.e("deneme","\n\nAfter deleting 10");
-        DeleteData(10);
-        Log.e("deneme","Inorder traversal: ");
-        inorder();
-    }
 }
