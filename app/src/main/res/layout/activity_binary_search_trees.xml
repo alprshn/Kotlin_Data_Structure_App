@@ -20,6 +20,18 @@
             android:layout_marginTop="200dp"
             android:layout_marginEnd="159dp"
             android:text="Button" />
+
+
+        <EditText
+            android:id="@+id/addTreeData"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="158dp"
+            android:layout_marginTop="300dp"
+            android:layout_marginEnd="159dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Name" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

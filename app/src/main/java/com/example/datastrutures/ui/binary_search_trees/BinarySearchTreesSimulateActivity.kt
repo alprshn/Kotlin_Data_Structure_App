@@ -2,6 +2,7 @@ package com.example.datastrutures.ui.binary_search_trees
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -24,6 +25,7 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
 
         var trees: BinarySearchTrees = BinarySearchTrees()
 
+
         binding.addCircleButton.setOnClickListener {
             frameLayout = binding.frameLayout
             createNewCircle()
@@ -31,16 +33,37 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         }
     }
 
+    var marginStartCount = 0
+    var marginTopCount = 0
+    var marginEndCount = 0
+
+
     fun createNewCircle() {
         val newFrameLayout = FrameLayout(this)
-
+        var deneme = binding.addTreeData.text.toString().toInt()
         val layoutParams = FrameLayout.LayoutParams(
             resources.getDimensionPixelSize(R.dimen.frame_width),
             resources.getDimensionPixelSize(R.dimen.frame_height)
         )
-        layoutParams.marginStart = resources.getDimensionPixelSize(R.dimen.margin_start)
-        layoutParams.topMargin = resources.getDimensionPixelSize(R.dimen.margin_top)
-        layoutParams.marginEnd = resources.getDimensionPixelSize(R.dimen.margin_end)
+
+        if (deneme > 10) {
+            marginStartCount = marginStartCount + 50
+            marginTopCount = marginTopCount + 150
+            layoutParams.marginStart =
+                resources.getDimensionPixelSize(R.dimen.margin_start) - marginStartCount
+            layoutParams.topMargin =
+                resources.getDimensionPixelSize(R.dimen.margin_top) + marginTopCount
+            layoutParams.marginEnd = resources.getDimensionPixelSize(R.dimen.margin_end)
+        } else {
+            marginStartCount = marginStartCount + 50
+            marginTopCount = marginTopCount + 150
+            layoutParams.marginStart =
+                resources.getDimensionPixelSize(R.dimen.margin_start) + marginStartCount
+            layoutParams.topMargin =
+                resources.getDimensionPixelSize(R.dimen.margin_top) + marginTopCount
+            layoutParams.marginEnd = resources.getDimensionPixelSize(R.dimen.margin_end)
+        }
+
         newFrameLayout.layoutParams = layoutParams
         newFrameLayout.setBackgroundResource(R.drawable.circle_background)
 
@@ -51,11 +74,18 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         ).apply {
             gravity = Gravity.CENTER
         }
-        textView.text = "10"
+        textView.text = binding.addTreeData.text.toString()
         textView.textSize = 16f
 
         newFrameLayout.addView(textView)
         frameLayout.addView(newFrameLayout)
+
+    }
+
+    fun LeftArrow(){
+
+    }
+    fun RigtArrow(){
 
     }
 }
