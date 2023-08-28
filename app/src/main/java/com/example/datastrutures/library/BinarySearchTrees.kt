@@ -1,5 +1,8 @@
 package com.example.datastrutures.library
 
+import android.util.Log
+import kotlin.math.log
+
 
 class Node(item: Int) {     /* Node data structure for binary search tree */
     var data: Int = item
@@ -35,7 +38,8 @@ class BinarySearchTrees {
     fun InorderRec(root: Node?) {
         if (root != null) {
             InorderRec(root.leftChild)
-            ///System.out.print(root.data + " -> ") data gelicek
+            var deneme = root.data
+            Log.e("deneme","$deneme + ->")
             InorderRec(root.rightChild)
         }
     }
@@ -79,4 +83,25 @@ class BinarySearchTrees {
         return minv!!
     }
 
+
+    fun main() {
+
+
+        Insert(8);
+        Insert(3);
+        Insert(1);
+        Insert(6);
+        Insert(7);
+        Insert(10);
+        Insert(14);
+        Insert(4);
+
+        Log.e("deneme","Inorder traversal: ");
+        inorder();
+
+        Log.e("deneme","\n\nAfter deleting 10");
+        DeleteData(10);
+        Log.e("deneme","Inorder traversal: ");
+        inorder();
+    }
 }

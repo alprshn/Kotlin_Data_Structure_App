@@ -9,6 +9,7 @@ import com.example.datastrutures.R
 import com.example.datastrutures.databinding.ActivityBinarySearchTreesBinding
 import com.example.datastrutures.databinding.ActivityQueuesSimulateBinding
 import com.example.datastrutures.databinding.ActivityStackSimulateBinding
+import com.example.datastrutures.library.BinarySearchTrees
 
 class BinarySearchTreesSimulateActivity : AppCompatActivity() {
     private lateinit var frameLayout: FrameLayout
@@ -21,10 +22,12 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
+        var trees: BinarySearchTrees = BinarySearchTrees()
 
         binding.addCircleButton.setOnClickListener {
             frameLayout = binding.frameLayout
             createNewCircle()
+            trees.main()
         }
     }
 
