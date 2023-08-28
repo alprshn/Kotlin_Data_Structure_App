@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.core.view.marginStart
 import com.example.datastrutures.R
 import com.example.datastrutures.databinding.ActivityBinarySearchTreesBinding
 import com.example.datastrutures.databinding.ActivityQueuesSimulateBinding
@@ -29,7 +30,10 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         binding.addCircleButton.setOnClickListener {
             frameLayout = binding.frameLayout
             createNewCircle()
+
             trees.main()
+            LeftArrow()
+            RigtArrow()
         }
     }
 
@@ -47,21 +51,23 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         )
 
         if (deneme > 10) {
-            marginStartCount = marginStartCount + 50
-            marginTopCount = marginTopCount + 150
+
             layoutParams.marginStart =
                 resources.getDimensionPixelSize(R.dimen.margin_start) - marginStartCount
             layoutParams.topMargin =
                 resources.getDimensionPixelSize(R.dimen.margin_top) + marginTopCount
             layoutParams.marginEnd = resources.getDimensionPixelSize(R.dimen.margin_end)
-        } else {
             marginStartCount = marginStartCount + 50
             marginTopCount = marginTopCount + 150
+        } else {
+
             layoutParams.marginStart =
                 resources.getDimensionPixelSize(R.dimen.margin_start) + marginStartCount
             layoutParams.topMargin =
                 resources.getDimensionPixelSize(R.dimen.margin_top) + marginTopCount
             layoutParams.marginEnd = resources.getDimensionPixelSize(R.dimen.margin_end)
+            marginStartCount = marginStartCount + 50
+            marginTopCount = marginTopCount + 150
         }
 
         newFrameLayout.layoutParams = layoutParams
@@ -83,9 +89,31 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
     }
 
     fun LeftArrow(){
-
+        val leftArrow = TextView(this)
+        leftArrow.setBackgroundResource(R.drawable.trees_arrow_left)
+        val layoutLeftArrow = FrameLayout.LayoutParams(
+            resources.getDimensionPixelSize(R.dimen.frame_width),
+            resources.getDimensionPixelSize(R.dimen.frame_height)
+        )
+        layoutLeftArrow.marginStart = resources.getDimensionPixelSize(R.dimen.margin_start) + 50
+        layoutLeftArrow.topMargin = resources.getDimensionPixelSize(R.dimen.margin_top) + 100
+        layoutLeftArrow.marginEnd = resources.getDimensionPixelSize(R.dimen.margin_end)
+        leftArrow.rotation = 225f
+        leftArrow.layoutParams = layoutLeftArrow
+        frameLayout.addView(leftArrow)
     }
     fun RigtArrow(){
-
+        val rightArrow = TextView(this)
+        rightArrow.setBackgroundResource(R.drawable.trees_arrow_left)
+        val layoutLeftArrow = FrameLayout.LayoutParams(
+            resources.getDimensionPixelSize(R.dimen.frame_width),
+            resources.getDimensionPixelSize(R.dimen.frame_height)
+        )
+        layoutLeftArrow.marginStart = resources.getDimensionPixelSize(R.dimen.margin_start) - 50
+        layoutLeftArrow.topMargin = resources.getDimensionPixelSize(R.dimen.margin_top) + 100
+        layoutLeftArrow.marginEnd = resources.getDimensionPixelSize(R.dimen.margin_end)
+        rightArrow.rotation = 315f
+        rightArrow.layoutParams = layoutLeftArrow
+        frameLayout.addView(rightArrow)
     }
 }
