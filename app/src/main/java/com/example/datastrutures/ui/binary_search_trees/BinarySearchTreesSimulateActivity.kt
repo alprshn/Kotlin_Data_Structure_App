@@ -21,7 +21,6 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBinarySearchTreesBinding
     var trees: BinarySearchTrees = BinarySearchTrees()
 
-    private lateinit var nodeContainer: ConstraintLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityBinarySearchTreesBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -29,7 +28,6 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
-        nodeContainer = binding.nodeContainer
         frameLayout = binding.frameLayout
 
         binding.addCircleButton.setOnClickListener {
@@ -42,8 +40,24 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
     }
 
     private fun refreshNodes(root: Node?) {
+        drawTree(root, frameLayout, resources.displayMetrics.widthPixels / 2, 100, 300)
+    }
 
-        drawTree(root, nodeContainer, resources.displayMetrics.widthPixels / 2, 100, 300)
+    private fun drawTree(node: Node?, parent: FrameLayout, x: Int, y: Int, xOffset: Int) {
+        if (node != null) {
+            val nodeView = createNewCircle(node.data.toString(), x, y, xOffset)
+            //Daierelrein içerisine Textview içerisindeki sayıyı atama
+            parent.addView(nodeView)
+            if (node.leftChild != null) {
+                drawTree(node.leftChild, parent, x - xOffset / 2, y + 150, xOffset / 2)
+                LeftArrow(x, y, xOffset)
+            }
+
+            if (node.rightChild != null) {
+                drawTree(node.rightChild, parent, x + xOffset / 2, y + 150, xOffset / 2)
+                RightArrow(x, y, xOffset) // Sağ ok çizimi
+            }
+        }
     }
 
     fun createNewCircle(text: String, x: Int, y: Int, xOffset: Int): FrameLayout {
@@ -52,7 +66,9 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         val layoutParams = FrameLayout.LayoutParams(
             resources.getDimensionPixelSize(R.dimen.frame_width),
             resources.getDimensionPixelSize(R.dimen.frame_height)
-        )
+        ).apply {
+            gravity = Gravity.CENTER_VERTICAL
+        }
 
         layoutParams.leftMargin = x - xOffset / 2
         layoutParams.topMargin = y
@@ -107,34 +123,6 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         rightArrow.rotation = 45f
         rightArrow.layoutParams = layoutLeftArrow
         frameLayout.addView(rightArrow)
-    }
-
-    private fun drawTree(node: Node?, parent: ConstraintLayout, x: Int, y: Int, xOffset: Int) {
-        if (node != null) {
-            val nodeView = createNewCircle(
-                node.data.toString(),
-                x,
-                y,
-                xOffset
-            ) //Daierelrein içerisine Textview içerisindeki sayıyı atama
-
-
-            parent.addView(nodeView)
-            if (node.leftChild != null) {
-                drawTree(node.leftChild, parent, x - xOffset / 2, y + 150, xOffset / 2)
-                LeftArrow(x, y, xOffset)
-            }
-
-
-
-
-
-
-            if (node.rightChild != null) {
-                drawTree(node.rightChild, parent, x + xOffset / 2, y + 150, xOffset / 2)
-                RightArrow(x, y, xOffset) // Sağ ok çizimi
-            }
-        }
     }
 
 
