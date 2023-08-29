@@ -11,12 +11,14 @@ class Node(item: Int) {     /* Node data structure for binary search tree */
 
 }
 
-var root: Node? = null
+
 
 class BinarySearchTrees {
+    var root: Node? = null
     var directionSelector: Boolean = false
     fun Insert(data: Int) {
         root = InsertData(root, data);
+
     }
 
     fun InsertData(root: Node?, data: Int): Node {

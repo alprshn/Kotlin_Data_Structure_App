@@ -5,18 +5,23 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.marginStart
 import com.example.datastrutures.R
 import com.example.datastrutures.databinding.ActivityBinarySearchTreesBinding
 import com.example.datastrutures.databinding.ActivityQueuesSimulateBinding
 import com.example.datastrutures.databinding.ActivityStackSimulateBinding
 import com.example.datastrutures.library.BinarySearchTrees
+import com.example.datastrutures.library.Node
 
 class BinarySearchTreesSimulateActivity : AppCompatActivity() {
     private lateinit var frameLayout: FrameLayout
     private lateinit var binding: ActivityBinarySearchTreesBinding
     var trees: BinarySearchTrees = BinarySearchTrees()
+
+    private lateinit var nodeContainer: ConstraintLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityBinarySearchTreesBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -24,48 +29,36 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
-
-
+        nodeContainer = binding.nodeContainer
+        frameLayout = binding.frameLayout
 
         binding.addCircleButton.setOnClickListener {
-            frameLayout = binding.frameLayout
-            createNewCircle()
+            var insertData = binding.addTreeData.text.toString()
+                .toInt() //Textview içerisinde bulunan sayıyı alma
 
-
+            trees.Insert(insertData) // BST algoritmasına Textview içerisinde bulunan sayıyı gönderme
+            refreshNodes(trees.root)
         }
     }
 
-    var marginStartCount = 0
-    var marginTopCount = 0
-    var marginEndCount = 0
+    private fun refreshNodes(root: Node?) {
 
+        drawTree(root, nodeContainer, resources.displayMetrics.widthPixels / 2, 100, 300)
+    }
 
-    fun createNewCircle() {
+    fun createNewCircle(text: String, x: Int, y: Int, xOffset: Int): FrameLayout {
         val newFrameLayout = FrameLayout(this)
         var deneme = binding.addTreeData.text.toString().toInt()
         val layoutParams = FrameLayout.LayoutParams(
             resources.getDimensionPixelSize(R.dimen.frame_width),
             resources.getDimensionPixelSize(R.dimen.frame_height)
         )
-        trees.directionSelector
-        if (trees.directionSelector == false) {
 
-            layoutParams.marginStart =
-                resources.getDimensionPixelSize(R.dimen.margin_start) - marginStartCount
-            layoutParams.topMargin =
-                resources.getDimensionPixelSize(R.dimen.margin_top) + marginTopCount
-            layoutParams.marginEnd = resources.getDimensionPixelSize(R.dimen.margin_end)
-            LeftArrow()
-        } else {
-            layoutParams.marginStart =
-                resources.getDimensionPixelSize(R.dimen.margin_start) + marginStartCount
-            layoutParams.topMargin =
-                resources.getDimensionPixelSize(R.dimen.margin_top) + marginTopCount
-            layoutParams.marginEnd = resources.getDimensionPixelSize(R.dimen.margin_end)
-            RigtArrow()
-        }
-        marginStartCount = marginStartCount + 50
-        marginTopCount = marginTopCount + 150
+        layoutParams.leftMargin = x - xOffset / 2
+        layoutParams.topMargin = y
+
+
+
         newFrameLayout.layoutParams = layoutParams
         newFrameLayout.setBackgroundResource(R.drawable.circle_background)
 
@@ -76,41 +69,73 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         ).apply {
             gravity = Gravity.CENTER
         }
-        textView.text = binding.addTreeData.text.toString()
+        textView.text = text
         textView.textSize = 16f
 
         newFrameLayout.addView(textView)
-        frameLayout.addView(newFrameLayout)
-
+        //frameLayout.addView(newFrameLayout)
+        return newFrameLayout
     }
 
-    fun LeftArrow() {
+    fun LeftArrow(x: Int, y: Int, xOffset: Int) {
         val leftArrow = TextView(this)
         leftArrow.setBackgroundResource(R.drawable.trees_arrow_left)
         val layoutLeftArrow = FrameLayout.LayoutParams(
             resources.getDimensionPixelSize(R.dimen.frame_width),
             resources.getDimensionPixelSize(R.dimen.frame_height)
         )
-        layoutLeftArrow.marginStart = resources.getDimensionPixelSize(R.dimen.margin_start) + 50
-        layoutLeftArrow.topMargin = resources.getDimensionPixelSize(R.dimen.margin_top) + 100
-        layoutLeftArrow.marginEnd = resources.getDimensionPixelSize(R.dimen.margin_end)
+        layoutLeftArrow.marginStart =
+            x - xOffset / 2 + resources.getDimensionPixelSize(R.dimen.margin_start)
+        layoutLeftArrow.topMargin = y + resources.getDimensionPixelSize(R.dimen.margin_top)
+
         leftArrow.rotation = 225f
         leftArrow.layoutParams = layoutLeftArrow
         frameLayout.addView(leftArrow)
     }
 
-    fun RigtArrow() {
+    fun RightArrow(x: Int, y: Int, xOffset: Int) {
         val rightArrow = TextView(this)
         rightArrow.setBackgroundResource(R.drawable.trees_arrow_left)
         val layoutLeftArrow = FrameLayout.LayoutParams(
             resources.getDimensionPixelSize(R.dimen.frame_width),
             resources.getDimensionPixelSize(R.dimen.frame_height)
         )
-        layoutLeftArrow.marginStart = resources.getDimensionPixelSize(R.dimen.margin_start) - 50
-        layoutLeftArrow.topMargin = resources.getDimensionPixelSize(R.dimen.margin_top) + 100
-        layoutLeftArrow.marginEnd = resources.getDimensionPixelSize(R.dimen.margin_end)
-        rightArrow.rotation = 315f
+        layoutLeftArrow.marginStart =
+            x - xOffset / 2 + resources.getDimensionPixelSize(R.dimen.margin_start)
+        layoutLeftArrow.topMargin =
+            x - xOffset / 2 + resources.getDimensionPixelSize(R.dimen.margin_top)
+        rightArrow.rotation = 45f
         rightArrow.layoutParams = layoutLeftArrow
         frameLayout.addView(rightArrow)
     }
+
+    private fun drawTree(node: Node?, parent: ConstraintLayout, x: Int, y: Int, xOffset: Int) {
+        if (node != null) {
+            val nodeView = createNewCircle(
+                node.data.toString(),
+                x,
+                y,
+                xOffset
+            ) //Daierelrein içerisine Textview içerisindeki sayıyı atama
+
+
+            parent.addView(nodeView)
+            if (node.leftChild != null) {
+                drawTree(node.leftChild, parent, x - xOffset / 2, y + 150, xOffset / 2)
+                LeftArrow(x, y, xOffset)
+            }
+
+
+
+
+
+
+            if (node.rightChild != null) {
+                drawTree(node.rightChild, parent, x + xOffset / 2, y + 150, xOffset / 2)
+                RightArrow(x, y, xOffset) // Sağ ok çizimi
+            }
+        }
+    }
+
+
 }
