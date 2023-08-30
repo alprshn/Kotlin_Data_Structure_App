@@ -1,5 +1,6 @@
 package com.example.datastrutures.ui.binary_search_trees
 
+import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
@@ -115,7 +116,6 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
 
         return line
     }
-
 
 
 }
