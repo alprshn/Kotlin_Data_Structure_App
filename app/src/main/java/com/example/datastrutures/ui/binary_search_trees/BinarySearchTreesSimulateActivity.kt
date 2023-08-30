@@ -117,5 +117,5 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         return line
     }
 
-
 }
+
