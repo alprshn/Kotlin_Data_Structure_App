@@ -10,29 +10,30 @@
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
 
         <Button
             android:id="@+id/addCircleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="158dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginEnd="159dp"
-            android:text="Button" />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
 
+            android:text="Button" />
 
         <EditText
             android:id="@+id/addTreeData"
-            android:layout_width="175dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="158dp"
-            android:layout_marginTop="300dp"
-            android:layout_marginEnd="159dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:inputType="number" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black"/>
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,4 +14,6 @@
     <dimen name="margin_end">181dp</dimen>
     <dimen name="arrow_width">1dp</dimen>
     <dimen name="arrow_height">1dp</dimen>
+    <dimen name="line_thickness">2dp</dimen>
+
 </resources>

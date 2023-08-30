@@ -1,9 +1,11 @@
 package com.example.datastrutures.ui.binary_search_trees
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -49,13 +51,20 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
             //Daierelrein içerisine Textview içerisindeki sayıyı atama
             parent.addView(nodeView)
             if (node.leftChild != null) {
-                drawTree(node.leftChild, parent, x - xOffset / 2, y + 150, xOffset / 2)
-                LeftArrow(x, y, xOffset)
+                val leftX = x - xOffset / 2
+                val leftY = y + 150
+
+                drawTree(node.leftChild, parent, leftX, leftY, xOffset / 2)
+                val lineView = createLine(x, y, leftX, leftY)
+                parent.addView(lineView)
             }
 
             if (node.rightChild != null) {
-                drawTree(node.rightChild, parent, x + xOffset / 2, y + 150, xOffset / 2)
-                RightArrow(x, y, xOffset) // Sağ ok çizimi
+                val rightX = x + xOffset / 2
+                val rightY = y + 150
+                drawTree(node.rightChild, parent, rightX, rightY, xOffset / 2)
+                val lineView = createLine(x, y, rightX, rightY)
+                parent.addView(lineView)
             }
         }
     }
@@ -66,10 +75,7 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         val layoutParams = FrameLayout.LayoutParams(
             resources.getDimensionPixelSize(R.dimen.frame_width),
             resources.getDimensionPixelSize(R.dimen.frame_height)
-        ).apply {
-            gravity = Gravity.CENTER_VERTICAL
-        }
-
+        )
         layoutParams.leftMargin = x - xOffset / 2
         layoutParams.topMargin = y
 
@@ -93,37 +99,27 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
         return newFrameLayout
     }
 
-    fun LeftArrow(x: Int, y: Int, xOffset: Int) {
-        val leftArrow = TextView(this)
-        leftArrow.setBackgroundResource(R.drawable.trees_arrow_left)
-        val layoutLeftArrow = FrameLayout.LayoutParams(
-            resources.getDimensionPixelSize(R.dimen.frame_width),
-            resources.getDimensionPixelSize(R.dimen.frame_height)
+
+    private fun createLine(x1: Int, y1: Int, x2: Int, y2: Int): View {
+        val line = View(this)
+        val deltaX = (x2 - x1).toDouble()
+        val deltaY = (y2 - y1).toDouble()
+
+        val length = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
+        val angle = Math.atan2(deltaY, deltaX)
+        val angleDegrees = Math.toDegrees(angle).toFloat()
+
+        val layoutParams = FrameLayout.LayoutParams(
+            length.toInt(),
+            resources.getDimensionPixelSize(R.dimen.line_thickness)
         )
-        layoutLeftArrow.marginStart =
-            x - xOffset / 2 + resources.getDimensionPixelSize(R.dimen.margin_start)
-        layoutLeftArrow.topMargin = y + resources.getDimensionPixelSize(R.dimen.margin_top)
+        layoutParams.leftMargin = x1
+        layoutParams.topMargin = y1
+        line.layoutParams = layoutParams
+        line.setBackgroundColor(Color.BLACK)
+        line.rotation = angleDegrees
 
-        leftArrow.rotation = 225f
-        leftArrow.layoutParams = layoutLeftArrow
-        frameLayout.addView(leftArrow)
+        return line
     }
-
-    fun RightArrow(x: Int, y: Int, xOffset: Int) {
-        val rightArrow = TextView(this)
-        rightArrow.setBackgroundResource(R.drawable.trees_arrow_left)
-        val layoutLeftArrow = FrameLayout.LayoutParams(
-            resources.getDimensionPixelSize(R.dimen.frame_width),
-            resources.getDimensionPixelSize(R.dimen.frame_height)
-        )
-        layoutLeftArrow.marginStart =
-            x - xOffset / 2 + resources.getDimensionPixelSize(R.dimen.margin_start)
-        layoutLeftArrow.topMargin =
-            x - xOffset / 2 + resources.getDimensionPixelSize(R.dimen.margin_top)
-        rightArrow.rotation = 45f
-        rightArrow.layoutParams = layoutLeftArrow
-        frameLayout.addView(rightArrow)
-    }
-
 
 }
