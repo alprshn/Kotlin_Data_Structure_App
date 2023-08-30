@@ -1,20 +1,14 @@
 package com.example.datastrutures.ui.binary_search_trees
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.marginStart
+import androidx.appcompat.app.AppCompatActivity
 import com.example.datastrutures.R
 import com.example.datastrutures.databinding.ActivityBinarySearchTreesBinding
-import com.example.datastrutures.databinding.ActivityQueuesSimulateBinding
-import com.example.datastrutures.databinding.ActivityStackSimulateBinding
 import com.example.datastrutures.library.BinarySearchTrees
 import com.example.datastrutures.library.Node
 
@@ -42,7 +36,7 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
     }
 
     private fun refreshNodes(root: Node?) {
-        drawTree(root, frameLayout, resources.displayMetrics.widthPixels / 2, 100, 300)
+        drawTree(root, frameLayout, resources.displayMetrics.widthPixels / 2, 200, 300)
     }
 
     private fun drawTree(node: Node?, parent: FrameLayout, x: Int, y: Int, xOffset: Int) {
@@ -121,5 +115,7 @@ class BinarySearchTreesSimulateActivity : AppCompatActivity() {
 
         return line
     }
+
+
 
 }
